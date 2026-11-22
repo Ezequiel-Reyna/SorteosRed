@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Sorteador de Reels</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,33 +9,34 @@
    Logo arriba y escenario negro del sorteo al centro (la lista de comentarios pasa y frena en el ganador).
    Fondo claro cálido para que el logo amarillo y negro resalte. */
 :root {
-  --bg: #fffdf0;
-  --bg2: #fff9d6;
-  --surface: #ffffff;
-  --line: #e8dd9a;
-  --fg: #121212;
-  --muted: #6b6540;
-  --brand: #121212;
-  --green: #121212;
+  --bg: #000000;
+  --bg2: #1a1a1a;
+  --surface: #141414;
+  --line: #3a371f;
+  --fg: #fff8d6;
+  --muted: #a8a27c;
+  --brand: #ffe500;
+  --green: #ffe500;
   --accent: #ffe500;
   --accent-ink: #121212;
-  --stage: #121212;
+  --stage: #161616;
   --stage-fg: #fffbe0;
   --stage-muted: #b8b28a;
-  --stage-line: #3a3a3a;
-  --danger: #c0301f;
-  --ok: #1c7f55;
-  --warn: #8f5a00;
+  --stage-line: #3d3d3d;
+  --danger: #ff7a6b;
+  --ok: #5be39a;
+  --warn: #ffc400;
   --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --row: 60px;
-  color-scheme: light;
+  color-scheme: dark;
 }
+html { background: #000; }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--bg);
-  background-image: linear-gradient(180deg, #000000 0, #000222 300px);
+  background-image: radial-gradient(ellipse 90% 320px at 50% 0, rgba(255, 229, 0, .22), rgba(0, 0, 0, 0));
   background-repeat: no-repeat;
   color: var(--fg);
   font-family: var(--font-body);
@@ -63,10 +64,10 @@ h1 {
   text-wrap: balance;
   color: var(--fg);
 }
-h1 span { background: var(--accent); color: var(--fg); padding: 0 .18em; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+h1 span { background: var(--accent); color: var(--accent-ink); padding: 0 .18em; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
 /* Panel de carga */
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 1px 2px rgba(18, 18, 18, .08); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 14px; box-shadow: none; }
 .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .field > label { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 input[type="text"], input[type="url"], input[type="number"], textarea {
@@ -80,7 +81,7 @@ input[type="text"], input[type="url"], input[type="number"], textarea {
   font-size: 16px;
 }
 textarea { resize: vertical; min-height: 120px; line-height: 1.35; }
-::placeholder { color: #9a9470; }
+::placeholder { color: #7a7550; }
 .hint { font-size: 13px; color: var(--muted); min-height: 1em; }
 .hint.ok { color: var(--ok); }
 .hint.warn { color: var(--warn); }
@@ -96,7 +97,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.35; }
 }
 .btn-sm { min-height: 38px; padding: 0 12px; font-size: 14px; }
 .btn-ghost { border-color: var(--line); background: var(--surface); }
-.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: #121212; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .msg { font-size: 14px; min-height: 1em; }
 .msg.ok { color: var(--ok); }
@@ -106,7 +107,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.35; }
 .meta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
 .pill { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 6px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pill b { color: var(--fg); font-variant-numeric: tabular-nums; }
-.stage { position: relative; height: calc(var(--row) * 5); overflow: hidden; border-radius: 16px; background: var(--stage); box-shadow: 0 10px 28px rgba(18, 18, 18, .35); }
+.stage { position: relative; height: calc(var(--row) * 5); overflow: hidden; border-radius: 16px; background: var(--stage); border: 1px solid #34310f; box-shadow: 0 10px 34px rgba(255, 229, 0, .10); }
 .reel { position: absolute; inset: 0; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 76%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 76%, transparent 100%); }
 .row { height: var(--row); padding: 0 20px; display: flex; flex-direction: column; justify-content: center; gap: 3px; opacity: .45; color: var(--stage-fg); }
 .row:nth-child(2), .row:nth-child(4) { opacity: .75; }
@@ -493,7 +494,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.35; }
     if (reduce) return;
     var dpr = Math.min(2, window.devicePixelRatio || 1);
     fx.width = innerWidth * dpr; fx.height = innerHeight * dpr;
-    var colors = ['#ffe500', '#121212', '#ffffff', '#ffc400', '#fff27a'];
+    var colors = ['#ffe500', '#ffffff', '#ffc400', '#fff27a', '#f2f2f2'];
     var P = [];
     for (var i = 0; i < 150; i++) P.push({
       x: innerWidth / 2 + (Math.random() - .5) * 80, y: innerHeight * .45,
